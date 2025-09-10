@@ -5,7 +5,9 @@ const mongoose = require("mongoose")
 const authSchema = new mongoose.Schema({
     email : String,
     fullname : String,
-    password :String
+    password :String,
+    image : String,
+    discription : String
 })
 
 const User = mongoose.model("User",authSchema)
