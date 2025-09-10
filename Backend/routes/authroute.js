@@ -1,6 +1,7 @@
 
 const express = require("express")
 const User = require("../model/authmodel.js")
+const { log } = require("node:console")
 
 const router = express.Router()
 
@@ -23,60 +24,78 @@ router.post("/signup", async (req, res) => {
     })
 })
 
-router.post("/signin",async (req,res) => {
-    const { email,password} = req.body
+router.post("/signin", async (req, res) => {
+    const { email, password } = req.body
 
     // checking terminal for log
-    console.log(email,password);
+    console.log(email, password);
 
     const checkUser = await User.find({
         email
         // email:email
     })  //search user in db
     // console.log(checkUser[0].password);
-    
+
     // sign in signup condition
-    if (checkUser.length==0) {
+    if (checkUser.length == 0) {
         res.json({
-            "msg":"Please Signup first!"
+            "msg": "Please Signup first!"
         })
     }
     // sign in wrong pass condition
-    if (checkUser[0].password!=password) {
+    if (checkUser[0].password != password) {
         res.json({
 
-            "msg":"Wrong Password Check Again"
+            "msg": "Wrong Password Check Again"
         })
 
     }
     // login success
     res.json({
-        "msg":"Signed Successfully"
+        "msg": "Signed Successfully"
     })
-    
 
-    
+
+
 })
 
-router.post("/profile", async (req,res) => {
-    const {email} = req.body
+router.post("/profile", async (req, res) => {
+    const { email } = req.body
 
     console.log(email);
-    const checkUser = await User.find({email})
+    const checkUser = await User.find({ email })
     console.log(checkUser);
-     if (checkUser.length==0) {
+    if (checkUser.length == 0) {
         res.json({
-            "msg":"Invalid Email!"
+            "msg": "Invalid Email!"
         })
     }
 
     // console.log(checkUser[0]);
-    
+
     res.json({
         "profile": checkUser[0]
     })
-    
-    
+
+
+})
+
+router.post("/profile/edit", async (req, res) => {
+    const { email, fullname, password, image, discription } = req.body
+
+    // console.log(email,fullname, password, image,discription);
+
+    const UpdatedUser = await User.findOneAndUpdate({ email }, {
+        fullname, password, image, discription
+    })
+
+    // console.log(UpdatedUser);
+
+    res.json({
+        "msg": "Profile Updated Successfully!"
+    })
+
+
 })
 
 module.exports = router
