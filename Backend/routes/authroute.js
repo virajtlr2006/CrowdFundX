@@ -1,7 +1,7 @@
 
 const express = require("express")
 const User = require("../model/authmodel.js")
-const { log } = require("console")
+
 const router = express.Router()
 
 router.post("/signup", async (req, res) => {
@@ -55,6 +55,27 @@ router.post("/signin",async (req,res) => {
     })
     
 
+    
+})
+
+router.post("/profile", async (req,res) => {
+    const {email} = req.body
+
+    console.log(email);
+    const checkUser = await User.find({email})
+    console.log(checkUser);
+     if (checkUser.length==0) {
+        res.json({
+            "msg":"Invalid Email!"
+        })
+    }
+
+    // console.log(checkUser[0]);
+    
+    res.json({
+        "profile": checkUser[0]
+    })
+    
     
 })
 
