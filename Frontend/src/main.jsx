@@ -7,6 +7,7 @@ import Signup from './pages/Signup.jsx';
 import Signin from './pages/Signin.jsx';
 import Profile from './pages/Profile.jsx';
 import Navbar from '../Components/Navbar.jsx';
+import EditProfile from './pages/EditProfile.jsx';
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
@@ -17,6 +18,7 @@ createRoot(document.getElementById('root')).render(
         <Route path="/signup" element={<Signup />} />
         <Route path="/signin" element={<Signin />} />
         <Route path="/profile" element={<Profile />} />
+        <Route path="/profile/edit" element={<EditProfile />} />
       </Routes>
     </BrowserRouter>
   </StrictMode>

@@ -1,12 +1,7 @@
 
 const express = require("express")
 const User = require("../model/authmodel.js")
-<<<<<<< HEAD
-const { log } = require("console")
-=======
-const { log } = require("node:console")
 
->>>>>>> b5402f8c0abfd24ac94954ef28be561b0bdcbf61
 const router = express.Router()
 
 router.post("/signup", async (req, res) => {
@@ -63,8 +58,6 @@ router.post("/signin", async (req, res) => {
 
 })
 
-<<<<<<< HEAD
-=======
 router.post("/profile", async (req, res) => {
     const { email } = req.body
 
@@ -78,7 +71,6 @@ router.post("/profile", async (req, res) => {
     }
 
     // console.log(checkUser[0]);
-
     res.json({
         "profile": checkUser[0]
     })
@@ -104,5 +96,4 @@ router.post("/profile/edit", async (req, res) => {
 
 })
 
->>>>>>> b5402f8c0abfd24ac94954ef28be561b0bdcbf61
 module.exports = router

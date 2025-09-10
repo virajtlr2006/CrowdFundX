@@ -21,6 +21,7 @@ const Signin = () => {
             alert("Enter Correct Password")
         }
         if(API.data.msg == "Signed Successfully"){
+            localStorage.setItem("email",email)
             navigate("/")
         }
 
