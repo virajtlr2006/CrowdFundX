@@ -1,6 +1,7 @@
 
 const express = require("express")
 const User = require("../model/authmodel.js")
+const { log } = require("console")
 const router = express.Router()
 
 router.post("/signup", async (req, res) => {
@@ -20,6 +21,41 @@ router.post("/signup", async (req, res) => {
     res.json({
         "msg": "Signed Up! Success"
     })
+})
+
+router.post("/signin",async (req,res) => {
+    const { email,password} = req.body
+
+    // checking terminal for log
+    console.log(email,password);
+
+    const checkUser = await User.find({
+        email
+        // email:email
+    })  //search user in db
+    // console.log(checkUser[0].password);
+    
+    // sign in signup condition
+    if (checkUser.length==0) {
+        res.json({
+            "msg":"Please Signup first!"
+        })
+    }
+    // sign in wrong pass condition
+    if (checkUser[0].password!=password) {
+        res.json({
+
+            "msg":"Wrong Password Check Again"
+        })
+
+    }
+    // login success
+    res.json({
+        "msg":"Signed Successfully"
+    })
+    
+
+    
 })
 
 module.exports = router
