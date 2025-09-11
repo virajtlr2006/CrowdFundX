@@ -12,6 +12,7 @@ const pitchSchema = new mongoose.Schema({
         name:String,
         description:String,
         image:String,
+        role:String
 }],
     totalfund:Number,
     raisefund:{

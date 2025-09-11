@@ -9,6 +9,7 @@ import Profile from './pages/Profile.jsx';
 import Homepage from '../Components/Homepage.jsx';
 import EditProfile from './pages/EditProfile.jsx';
 import Explore from './pages/Explore.jsx';
+import Singlepage from './pages/Singlepage.jsx';
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
@@ -21,6 +22,7 @@ createRoot(document.getElementById('root')).render(
         <Route path="/profile" element={<Profile />} />
         <Route path="/profile/edit" element={<EditProfile />} />
         <Route path="/explore" element={<Explore />} />
+        <Route path="/explore/:id" element={<Singlepage/>} />
       </Routes>
     </BrowserRouter>
   </StrictMode>
