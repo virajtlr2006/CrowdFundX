@@ -10,6 +10,7 @@ import Homepage from '../Components/Homepage.jsx';
 import EditProfile from './pages/EditProfile.jsx';
 import Explore from './pages/Explore.jsx';
 import Singlepage from './pages/Singlepage.jsx';
+import Newpitch from './pages/Newpitch.jsx';
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
@@ -23,6 +24,8 @@ createRoot(document.getElementById('root')).render(
         <Route path="/profile/edit" element={<EditProfile />} />
         <Route path="/explore" element={<Explore />} />
         <Route path="/explore/:id" element={<Singlepage/>} />
+        <Route path="/new" element={<Newpitch/>} />
+        
       </Routes>
     </BrowserRouter>
   </StrictMode>

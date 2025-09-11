@@ -15,7 +15,6 @@ router.post("/new",async (req,res) => {
     const { raisefund,
     compname,
     description,
-    fullname,
     email,
     image,
     totalfund,
@@ -25,7 +24,7 @@ router.post("/new",async (req,res) => {
         raisefund,
     compname,
     description,
-    fullname,
+
     email,
     image,
     totalfund,
