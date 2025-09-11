@@ -4,91 +4,110 @@ import { useNavigate } from "react-router";
 import { Layers, Rocket } from 'lucide-react';
 
 const Signup = () => {
-
   const [fullname, setFullname] = useState("")
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
 
   const navigate = useNavigate()
-  const onSubmit = async () => {
 
+  const onSubmit = async () => {
     const API = await axios.post("http://localhost:8080/auth/signup", {
       fullname,
       email,
       password
     })
-    if (API.data.msg == "Signed Up! Success") {
+    if (API.data.msg === "Signed Up! Success") {
       navigate("/signin")
     }
-
   }
+
   return (
-    <div>
-      <div className='flex items-center justify-center min-h-screen bg-gray-100 '>
-        <div>
-        </div>
-        <div className='pr-20 justify-center'>
-          <Rocket className='text-blue-700 h-20 w-20 ml-20'/>
-          <h2 class="text-3xl font-bold text-gray-800">Launch Your Dream</h2>
-          <p class="text-gray-600 mt-3 max-w-sm">Join a community of innovators, creators, and supporters. Bring your ideas to life with CrowdfundX.</p>
-        </div>
-        <div className='bg-white grid grid-rows-2 justify-center items-center shadow-lg h-140 w-90 rounded-2xl'>
+    <div className="flex min-h-screen bg-gray-100">
+      {/* Left Section - Impactful Text */}
+      <div className="flex flex-col justify-center items-start px-20 w-1/2 bg-gradient-to-br from-purple-600 to-indigo-600 text-white">
+        <Rocket className="h-16 w-16 mb-6" />
+        <h1 className="text-4xl font-bold">Launch Your Big Idea</h1>
+        <p className="mt-4 text-lg text-gray-200 max-w-md">
+          CrowdfundX empowers dreamers, creators, and innovators to bring bold visions to life. 
+          Join our community and take the first step toward making your idea a reality.
+        </p>
+      </div>
 
-
-          <div className='mb-10 ml-4'>
-            <Layers className='ml-28 text-blue-700 ' />
-            <h1 className='font-bold text-3xl'>Join CrowdfundX</h1>
-            <h6 className='text-xs mb-2 ml-4 '>Create your own account to get started</h6>
+      {/* Right Section - Signup Card */}
+      <div className="flex items-center justify-center w-1/2">
+        <div className="bg-white shadow-lg rounded-2xl p-8 w-96">
+          {/* Header */}
+          <div className="text-center mb-6">
+            <Layers className="mx-auto text-blue-700 h-12 w-12" />
+            <h1 className="font-bold text-2xl mt-2">Create Account</h1>
+            <p className="text-sm text-gray-500">Start your journey with CrowdfundX</p>
           </div>
 
-
-          <div className='mb-22'>
-            <div className='py-3 '>
-              <input className='h-9 p-3 w-70 shadow-sm  bg-gray-100 rounded' type="text" placeholder='Full Name' onChange={(e) => setFullname(e.target.value)} /> <br />
+          {/* Form */}
+          <div className="space-y-4">
+            <div>
+              <label className="block text-sm font-medium text-gray-700">Full Name</label>
+              <input
+                className="mt-1 h-10 p-3 w-full shadow-sm bg-gray-100 rounded focus:ring-indigo-500 focus:border-indigo-500"
+                type="text"
+                placeholder="Enter your full name"
+                onChange={(e) => setFullname(e.target.value)}
+              />
             </div>
 
-            <div className='py-3'>
-              <input className='h-9 p-3 w-70 shadow-sm bg-gray-100 rounded' type="text" placeholder='Email' onChange={(e) => setEmail(e.target.value)} /> <br />
+            <div>
+              <label className="block text-sm font-medium text-gray-700">Email</label>
+              <input
+                className="mt-1 h-10 p-3 w-full shadow-sm bg-gray-100 rounded focus:ring-indigo-500 focus:border-indigo-500"
+                type="text"
+                placeholder="Enter your email"
+                onChange={(e) => setEmail(e.target.value)}
+              />
             </div>
 
-            <div className='py-3'>
-              <input className='h-9 p-3 w-70 shadow-sm bg-gray-100 rounded' type="password" placeholder='Password' onChange={(e) => setPassword(e.target.value)} /> <br />
+            <div>
+              <label className="block text-sm font-medium text-gray-700">Password</label>
+              <input
+                className="mt-1 h-10 p-3 w-full shadow-sm bg-gray-100 rounded focus:ring-indigo-500 focus:border-indigo-500"
+                type="password"
+                placeholder="Enter your password"
+                onChange={(e) => setPassword(e.target.value)}
+              />
             </div>
-            <div class="flex items-center">
-              <input class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500 checked:bg-indigo-600 checked:border-indigo-600 checked:bg-[image:var(--checkbox-tick-svg)]" id="terms" name="terms" type="checkbox" />
-              <label class="ml-2 block text-sm text-gray-900" for="terms">I agree to the <a class="font-medium text-indigo-600 hover:text-indigo-500" href="#">Terms and Conditions</a></label>
-            </div>
-            <div className='py-3'>
-              <button className='w-full flex justify-center py-3 px-4 border border-transparent rounded-lg shadow-sm text-sm font-medium text-white bg-[#4F46E5] hover:bg-[#4338CA] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-colors' onClick={onSubmit}>Create Account</button>
-            </div>
-            <div class="mt-6 grid grid-cols-3 gap-3">
-              <div>
-                <a class="w-full inline-flex justify-center py-2.5 px-4 border border-gray-300 rounded-lg shadow-sm bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors" href="#">
-                  <span class="sr-only">Sign up with Google</span>
-                  <img alt="Google" class="h-5 w-5" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDYdf418qDnpckA_BQ8p02ztcmfwwiaSgVWBveFuj2_M1HP2hlmhC2ZHGENhhG1Q3T5JHD-NJWKGadxbyLw7ijjD9V9mXdvcULssgsBO_ADQvQ5yLMMvC8b2hDbAjVBMWjaz-noPXyXWVKK6LQ8dve0uxowxwhDhYBzy_O9dP33CnSES-LB2-0pgASRgx-pqcJzEcpx73qIvTbuv72IGZ5jRZz6kR2r30USd-O1L5ktuMPeHVnU1m-eDU00Yzm_Fgrd5QfC1Ahj5EIQ" />
+
+            <div className="flex items-center">
+              <input
+                id="terms"
+                name="terms"
+                type="checkbox"
+                className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+              />
+              <label htmlFor="terms" className="ml-2 text-sm text-gray-700">
+                I agree to the{" "}
+                <a href="#" className="font-medium text-indigo-600 hover:text-indigo-500">
+                  Terms and Conditions
                 </a>
-              </div>
-              <div>
-                <a class="w-full inline-flex justify-center py-2.5 px-4 border border-gray-300 rounded-lg shadow-sm bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors" href="#">
-                  <span class="sr-only">Sign up with GitHub</span>
-                  <img alt="GitHub" class="h-5 w-5" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCrlFgfci9GTD8rWlFBJztPtn5Tu8OXxTYWW8_q71wlLb9m-FprFR7wrIfY0V6lCgNKWi1JE9fmQogfhduLkA90b70DGucBsStRddZjMFwpSvOWfueyhAtmMeScW9gMSKmEeIFyvH56Zw9NuceGp9nM31b4LUXxTuLWHaTVBRJMOEoJ56AmyhShhqKT9p3_BgLdEWIic6tP0tFFlsA4fmSLoKmzhaqR3qB-uQEXRkwJL8JNPzWTbj_qEa3VywW0ydkUb9WVP-PvjD3R" />
-                </a>
-              </div>
-              <div>
-                <a className="w-full inline-flex justify-center py-2.5 px-4 border border-gray-300 rounded-lg shadow-sm bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors" href="#">
-                  <span className="sr-only">Sign up with Facebook</span>
-                  <img alt="Facebook" className="h-5 w-5" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAfq2NPmVkSgBNRahdtZPgBtv2bHMmfJQzgx0WDEfFQYsSM0B-EGzBvnmSagGQbhUFhcFZNOg4bfMguh3bFFdJBhagohdJqNtcBXzM6eyEyc0iC_WJjbxpAL5pdnADK12jit-TZ9-rv2wU6-nuBdUUIoWWFckI31Brib08-lcGQyOj74zIRofYOukH3lEUQ9J9z1kUukS-8SVJIjuicJsdOwFUZAzVwaOIODJlyr52GhqyNV8IYfsiUfy4K1QgC7wDyInaWOsxy1gSw" />
-                </a>
-              </div>
+              </label>
             </div>
+
+            <button
+              className="w-full flex justify-center py-3 px-4 rounded-lg shadow-sm text-sm font-medium text-white bg-[#4F46E5] hover:bg-[#4338CA] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-colors"
+              onClick={onSubmit}
+            >
+              Create Account
+            </button>
           </div>
-          <div className="mt-8 mb-8 text-center text-sm text-gray-500">
-            Already have an account? <a class="font-medium text-indigo-600 hover:text-indigo-500" href="#">Sign In</a>
+
+          {/* Footer */}
+          <div className="mt-6 text-center text-sm text-gray-500">
+            Already have an account?{" "}
+            <a className="font-medium text-indigo-600 hover:text-indigo-500" href="/signin">
+              Sign In
+            </a>
           </div>
         </div>
       </div>
     </div>
-
   )
 }
 

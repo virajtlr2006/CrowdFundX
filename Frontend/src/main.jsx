@@ -11,10 +11,11 @@ import EditProfile from './pages/EditProfile.jsx';
 import Explore from './pages/Explore.jsx';
 import Singlepage from './pages/Singlepage.jsx';
 import Newpitch from './pages/Newpitch.jsx';
+import Navbar from '../Components/Navbar.jsx';
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-  
+  <Navbar />
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Homepage />} />

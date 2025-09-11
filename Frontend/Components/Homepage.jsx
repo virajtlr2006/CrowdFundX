@@ -4,21 +4,7 @@ const Navbar = () => {
   return (
     // Navbar 
     <div>
-      <div className='flex justify-between px-12 bg-blue-50 '>
-        <a href="/" className='flex gap-3 items-center'>
-          <Layers className='text-blue-700' />
-          <label className='font-bold'>CrowdFundX</label>
-        </a>
-        <div className='flex gap-4 items-center text-gray-600 hover:text-indigo-700'>
-          {["Home", "Explore", "Start a Campign", "About"].map((link) =>
-            <a href={link}>{link}</a>
-          )}
-        </div>
-        <div className='flex gap-3 items-center'>
-          <button className=' text-gray-600 hover:text-indigo-700'><a href='/signin'>Log In</a></button>
-          <button type="button" class="py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700" >Sign Up</button>
-        </div>
-      </div>
+     
       {/* Workspace */}
       <div className='bg-blue-200'>
         <main class="relative">
