@@ -3,6 +3,7 @@
 const express = require("express");
 const dbConnect = require("./config/mongoconnect.js")
 const authrouter = require("./routes/authroute.js")
+const PitchRoute = require("./routes/PitchRoute.js")
 const cors = require("cors");
 const app = express()
 // middleware
@@ -25,3 +26,4 @@ app.get("/",async (req,res) => {
 })
 
 app.use("/auth",authrouter)
+app.use("/pitch",PitchRoute)
