@@ -8,6 +8,7 @@ import Signin from './pages/Signin.jsx';
 import Profile from './pages/Profile.jsx';
 import Homepage from '../Components/Homepage.jsx';
 import EditProfile from './pages/EditProfile.jsx';
+import Explore from './pages/Explore.jsx';
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
@@ -19,6 +20,7 @@ createRoot(document.getElementById('root')).render(
         <Route path="/signin" element={<Signin />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/profile/edit" element={<EditProfile />} />
+        <Route path="/explore" element={<Explore />} />
       </Routes>
     </BrowserRouter>
   </StrictMode>
