@@ -27,12 +27,12 @@ const Signup = () => {
       <div className='flex items-center justify-center min-h-screen bg-gray-100 '>
         <div>
         </div>
-        <div className='pr-20'>
+        <div className='pr-20 justify-center'>
           <Rocket className='text-blue-700 h-20 w-20 ml-20'/>
           <h2 class="text-3xl font-bold text-gray-800">Launch Your Dream</h2>
           <p class="text-gray-600 mt-3 max-w-sm">Join a community of innovators, creators, and supporters. Bring your ideas to life with CrowdfundX.</p>
         </div>
-        <div className='bg-white grid grid-rows-2 justify-center items-center border-2 h-140 w-90 rounded-2xl'>
+        <div className='bg-white grid grid-rows-2 justify-center items-center shadow-lg h-140 w-90 rounded-2xl'>
 
 
           <div className='mb-10 ml-4'>
@@ -44,15 +44,15 @@ const Signup = () => {
 
           <div className='mb-22'>
             <div className='py-3 '>
-              <input className='h-7 w-70 border-1 bg-gray-100 rounded' type="text" placeholder='Full Name' onChange={(e) => setFullname(e.target.value)} /> <br />
+              <input className='h-9 p-3 w-70 shadow-sm  bg-gray-100 rounded' type="text" placeholder='Full Name' onChange={(e) => setFullname(e.target.value)} /> <br />
             </div>
 
             <div className='py-3'>
-              <input className='h-7 w-70 border-1 bg-gray-100 rounded' type="text" placeholder='Email' onChange={(e) => setEmail(e.target.value)} /> <br />
+              <input className='h-9 p-3 w-70 shadow-sm bg-gray-100 rounded' type="text" placeholder='Email' onChange={(e) => setEmail(e.target.value)} /> <br />
             </div>
 
             <div className='py-3'>
-              <input className='h-7 w-70 border-1 bg-gray-100 rounded' type="password" placeholder='Password' onChange={(e) => setPassword(e.target.value)} /> <br />
+              <input className='h-9 p-3 w-70 shadow-sm bg-gray-100 rounded' type="password" placeholder='Password' onChange={(e) => setPassword(e.target.value)} /> <br />
             </div>
             <div class="flex items-center">
               <input class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500 checked:bg-indigo-600 checked:border-indigo-600 checked:bg-[image:var(--checkbox-tick-svg)]" id="terms" name="terms" type="checkbox" />
@@ -82,7 +82,7 @@ const Signup = () => {
               </div>
             </div>
           </div>
-          <div className="mt-8 text-center text-sm text-gray-500">
+          <div className="mt-8 mb-8 text-center text-sm text-gray-500">
             Already have an account? <a class="font-medium text-indigo-600 hover:text-indigo-500" href="#">Sign In</a>
           </div>
         </div>
