@@ -8,8 +8,19 @@ const Newpitch = () => {
   const [image, setImage] = useState("");
   const [raisedfund, setRaisedfund] = useState("");
   const [totalfund, setTotalfund] = useState("");
-  const [singleprice, setsingleprice] = useState(0)
+  const [singleprice, setsingleprice] = useState(0);
+  const [team, setTeam] = useState([]);
   const navigate = useNavigate();
+
+  const addTeamMember = () => {
+    setTeam([...team, { name: "", description: "", image: "", role: "" }]);
+  };
+
+  const handleTeamChange = (index, field, value) => {
+    const updatedTeam = [...team];
+    updatedTeam[index][field] = value;
+    setTeam(updatedTeam);
+  };
 
   const submitPitch = async () => {
     const email = localStorage.getItem("email");
@@ -20,7 +31,8 @@ const Newpitch = () => {
       totalfund,
       email,
       image,
-      singleprice
+      singleprice,
+      team,
     });
 
     if (npitch.data.msg === "Successfully added") {
@@ -35,13 +47,13 @@ const Newpitch = () => {
       <div className="absolute bottom-10 right-10 w-72 h-72 bg-pink-300 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-2000"></div>
 
       {/* New Pitch Form Card */}
-      <div className="relative bg-white rounded-3xl shadow-2xl max-w-lg w-full p-8 z-10">
+      <div className="relative bg-white rounded-3xl shadow-2xl max-w-2xl w-full p-8 z-10">
         <h1 className="text-3xl font-extrabold text-gray-900 text-center mb-6">
           Create Your Campaign
         </h1>
 
         <div className="space-y-4">
-          {/* Image */}
+          {/* Campaign Image */}
           <div>
             <label className="text-sm font-semibold text-gray-700">Campaign Image URL</label>
             <input
@@ -49,7 +61,7 @@ const Newpitch = () => {
               value={image}
               onChange={(e) => setImage(e.target.value)}
               placeholder="Image URL"
-              className="mt-1 w-full px-4 py-2 rounded-xl border border-gray-300 focus:ring-2 focus:ring-indigo-400 focus:outline-none transition-all"
+              className="mt-1 w-full px-4 py-2 rounded-xl border border-gray-300 focus:ring-2 focus:ring-blue-400 focus:outline-none transition-all"
             />
           </div>
 
@@ -61,7 +73,7 @@ const Newpitch = () => {
               value={compname}
               onChange={(e) => setCompname(e.target.value)}
               placeholder="Campaign Name"
-              className="mt-1 w-full px-4 py-2 rounded-xl border border-gray-300 focus:ring-2 focus:ring-indigo-400 focus:outline-none transition-all"
+              className="mt-1 w-full px-4 py-2 rounded-xl border border-gray-300 focus:ring-2 focus:ring-blue-400 focus:outline-none transition-all"
             />
           </div>
 
@@ -72,19 +84,19 @@ const Newpitch = () => {
               value={description}
               onChange={(e) => setDescription(e.target.value)}
               placeholder="Campaign Description"
-              className="mt-1 w-full px-4 py-2 rounded-xl border border-gray-300 focus:ring-2 focus:ring-indigo-400 focus:outline-none transition-all resize-none h-24"
+              className="mt-1 w-full px-4 py-2 rounded-xl border border-gray-300 focus:ring-2 focus:ring-blue-400 focus:outline-none transition-all resize-none h-24"
             />
           </div>
 
-          {/* Raised Fund */}
+          {/* Single Price */}
           <div>
-            <label className="text-sm font-semibold text-gray-700">single  price</label>
+            <label className="text-sm font-semibold text-gray-700">Single Price</label>
             <input
               type="number"
               value={singleprice}
               onChange={(e) => setsingleprice(e.target.value)}
-              placeholder="Raised Fund"
-              className="mt-1 w-full px-4 py-2 rounded-xl border border-gray-300 focus:ring-2 focus:ring-indigo-400 focus:outline-none transition-all"
+              placeholder="Single Price"
+              className="mt-1 w-full px-4 py-2 rounded-xl border border-gray-300 focus:ring-2 focus:ring-blue-400 focus:outline-none transition-all"
             />
           </div>
 
@@ -96,8 +108,55 @@ const Newpitch = () => {
               value={totalfund}
               onChange={(e) => setTotalfund(e.target.value)}
               placeholder="Total Fund Goal"
-              className="mt-1 w-full px-4 py-2 rounded-xl border border-gray-300 focus:ring-2 focus:ring-indigo-400 focus:outline-none transition-all"
+              className="mt-1 w-full px-4 py-2 rounded-xl border border-gray-300 focus:ring-2 focus:ring-blue-400 focus:outline-none transition-all"
             />
+          </div>
+
+          {/* Team Members */}
+          <div>
+            <label className="text-sm font-semibold text-gray-700">Team Members</label>
+            {team.map((member, index) => (
+              <div
+                key={index}
+                className="mt-4 p-4 border rounded-xl bg-gray-50 shadow-sm hover:shadow-md transition space-y-2"
+              >
+                <input
+                  type="text"
+                  placeholder="Name"
+                  value={member.name}
+                  onChange={(e) => handleTeamChange(index, "name", e.target.value)}
+                  className="w-full px-3 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-400"
+                />
+                <input
+                  type="text"
+                  placeholder="Role"
+                  value={member.role}
+                  onChange={(e) => handleTeamChange(index, "role", e.target.value)}
+                  className="w-full px-3 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-400"
+                />
+                <input
+                  type="text"
+                  placeholder="Image URL"
+                  value={member.image}
+                  onChange={(e) => handleTeamChange(index, "image", e.target.value)}
+                  className="w-full px-3 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-400"
+                />
+                <textarea
+                  placeholder="Description"
+                  value={member.description}
+                  onChange={(e) => handleTeamChange(index, "description", e.target.value)}
+                  className="w-full px-3 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-400 resize-none h-16"
+                />
+              </div>
+            ))}
+
+            <button
+              type="button"
+              onClick={addTeamMember}
+              className="mt-4 px-5 py-2 bg-blue-600 text-white font-medium rounded-xl shadow hover:bg-blue-700 transition"
+            >
+              + Add Team Member
+            </button>
           </div>
         </div>
 
@@ -105,7 +164,7 @@ const Newpitch = () => {
         <div className="mt-6 flex justify-center">
           <button
             onClick={submitPitch}
-            className="px-6 py-3 bg-indigo-600 text-white font-semibold rounded-xl shadow-lg hover:bg-indigo-700 transition-all duration-300 w-full"
+            className="px-6 py-3 bg-blue-600 text-white font-semibold rounded-xl shadow-lg hover:bg-blue-700 transition-all duration-300 w-full"
           >
             Create Campaign
           </button>
