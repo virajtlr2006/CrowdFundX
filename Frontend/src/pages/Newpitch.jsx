@@ -8,6 +8,7 @@ const Newpitch = () => {
   const [image, setImage] = useState("");
   const [raisedfund, setRaisedfund] = useState("");
   const [totalfund, setTotalfund] = useState("");
+  const [singleprice, setsingleprice] = useState(0)
   const navigate = useNavigate();
 
   const submitPitch = async () => {
@@ -19,6 +20,7 @@ const Newpitch = () => {
       totalfund,
       email,
       image,
+      singleprice
     });
 
     if (npitch.data.msg === "Successfully added") {
@@ -76,11 +78,11 @@ const Newpitch = () => {
 
           {/* Raised Fund */}
           <div>
-            <label className="text-sm font-semibold text-gray-700">Raised Fund</label>
+            <label className="text-sm font-semibold text-gray-700">single  price</label>
             <input
               type="number"
-              value={raisedfund}
-              onChange={(e) => setRaisedfund(e.target.value)}
+              value={singleprice}
+              onChange={(e) => setsingleprice(e.target.value)}
               placeholder="Raised Fund"
               className="mt-1 w-full px-4 py-2 rounded-xl border border-gray-300 focus:ring-2 focus:ring-indigo-400 focus:outline-none transition-all"
             />

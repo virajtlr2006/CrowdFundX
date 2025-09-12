@@ -12,6 +12,8 @@ import Explore from './pages/Explore.jsx';
 import Singlepage from './pages/Singlepage.jsx';
 import Newpitch from './pages/Newpitch.jsx';
 import Navbar from '../Components/Navbar.jsx';
+import Payment from './pages/Payment.jsx';
+import Myfund from './pages/Myfund.jsx';
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
@@ -25,7 +27,9 @@ createRoot(document.getElementById('root')).render(
         <Route path="/profile/edit" element={<EditProfile />} />
         <Route path="/explore" element={<Explore />} />
         <Route path="/explore/:id" element={<Singlepage/>} />
+        <Route path="/payment/:id" element={<Payment/>} />
         <Route path="/new" element={<Newpitch/>} />
+        <Route path="/myfund" element={<Myfund/>} />
         
       </Routes>
     </BrowserRouter>

@@ -6,6 +6,8 @@ import Membercard from "../../Components/Membercard";
 
 const Singlepage = () => {
   const [singlepitch, setsinglepitch] = useState(null);
+  const [fund, setfund] = useState(0)
+  const [ufund, setufund] = useState(0)
   const { id } = useParams();
 const navigate = useNavigate()
   useEffect(() => {
@@ -13,12 +15,18 @@ const navigate = useNavigate()
   }, []);
 
   const getpitch = async () => {
-    const pitch = await axios.get(`http://localhost:8080/pitch/${id}`);
-    setsinglepitch(pitch.data);
+    const email = localStorage.getItem("email")
+    const pitch = await axios.post("http://localhost:8080/pitch/single",{
+      id,
+email
+    });
+    setsinglepitch(pitch.data.singlepitch);
+    setfund(pitch.data.fund)
+    setufund(pitch.data.userfund)
   };
 
   const backtoproject =async () => {
-    navigate("/explore")
+    navigate(`/payment/${id}`)
   }
   return (
     <div className="min-h-screen bg-gradient-to-r from-indigo-50 to-purple-50 py-12 px-6">
@@ -62,7 +70,7 @@ const navigate = useNavigate()
             <p className="text-lg text-gray-600">
               Raised:{" "}
               <span className="font-bold text-green-600">
-                ${singlepitch.raisefund}
+                ${fund}
               </span>
             </p>
             <p className="text-lg text-gray-600 mt-2">
@@ -78,22 +86,25 @@ const navigate = useNavigate()
                 className="bg-gradient-to-r from-green-400 to-green-600 h-3 rounded-full"
                 style={{
                   width: `${
-                    (singlepitch.raisefund / singlepitch.totalfund) * 100
+                    (fund / singlepitch.totalfund) * 100
                   }%`,
                 }}
               ></div>
             </div>
             <p className="text-sm text-gray-500 mt-2">
               {(
-                (singlepitch.raisefund / singlepitch.totalfund) *
+                (fund / singlepitch.totalfund) *
                 100
               ).toFixed(1)}
               % funded
             </p>
+            <p>
+             you owned {ufund}
+            </p>
 
             {/* CTA */}
             <button onClick={backtoproject} className="mt-6 px-6 py-3 bg-indigo-600 text-white font-semibold rounded-xl shadow-md hover:bg-indigo-700 transition-all">
-              Back this Project 🚀
+              payment 🚀
             </button>
           </div>
         </div>

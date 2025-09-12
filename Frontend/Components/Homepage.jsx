@@ -1,93 +1,187 @@
 import React from 'react'
-import { Layers } from 'lucide-react'
+import { Layers, TrendingUp, Users, Target, Zap } from 'lucide-react'
+import { useNavigate } from 'react-router'
+
 const Navbar = () => {
+
+  const navigate = useNavigate()
+
+  const newcampaign = async () => {
+    navigate("/new")
+  }
+
+  const explorecampaign = async () => {
+    navigate("/explore")
+  }
+
   return (
-    // Navbar 
-    <div>
-     
-      {/* Workspace */}
-      <div className='bg-blue-200'>
-        <main class="relative">
-          <section class="pt-40 pb-24 sm:pt-48 sm:pb-32">
-            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-              <div class="grid lg:grid-cols-2 gap-12 items-center">
-                <div class="text-center lg:text-left">
-                  <h1 class="text-5xl md:text-6xl lg:text-7xl font-extrabold text-gray-900 leading-tight">
-                    Empower Ideas,
-                    <span class="block">Fund Dreams</span>
-                  </h1>
-                  <p class="mt-6 text-lg text-gray-600 max-w-xl mx-auto lg:mx-0">
-                    The premier platform to bring your creative projects to life. Join a community of innovators and backers who believe in the power of great ideas.
-                  </p>
-                  <div class="mt-10 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                    <a class="inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-white bg-indigo-600 border border-transparent rounded-lg shadow-lg hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-all" href="#">
-                      Start a Campaign
-                    </a>
-                    <a class="inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-indigo-600 bg-white border-2 border-indigo-200 rounded-lg shadow-sm hover:bg-indigo-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-all" href="#">
-                      Explore Campaigns
-                    </a>
+    <div className="flex flex-col min-h-screen bg-gradient-to-br from-indigo-100 via-white to-indigo-50">
+      
+      {/* Hero Section */}
+      <main className="relative flex-1">
+        <section className="pt-12 pb-20 sm:pt-16 sm:pb-24">
+          <div className="container mx-auto px-6 lg:px-12">
+            <div className="grid lg:grid-cols-2 gap-16 items-center">
+              
+              {/* Left Text */}
+              <div className="text-center lg:text-left space-y-6">
+                <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold text-gray-900 leading-tight">
+                  Empower Ideas,
+                  <span className="block text-indigo-600">Fund Dreams</span>
+                </h1>
+                <p className="mt-4 text-lg text-gray-600 max-w-xl mx-auto lg:mx-0">
+                  CrowdfundX helps bring creative projects to life. Join a global community of dreamers, innovators, and backers who believe in the power of ideas.
+                </p>
+                <div className="mt-8 flex flex-col sm:flex-row gap-5 justify-center lg:justify-start">
+                  <a 
+                  onClick={newcampaign}
+                    href="#"
+                    className="px-8 py-4 text-lg font-semibold text-white bg-gradient-to-r from-indigo-600 to-purple-600 rounded-2xl shadow-lg hover:scale-105 transition-transform duration-300"
+                  >
+                    🚀 Start a Campaign
+                  </a>
+                  <a 
+                  onClick={explorecampaign}
+                    href="#"
+                    className="px-8 py-4 text-lg font-semibold text-indigo-700 bg-white border border-indigo-200 rounded-2xl shadow hover:bg-indigo-50 hover:scale-105 transition-transform duration-300"
+                  >
+                    🔍 Explore Campaigns
+                  </a>
+                </div>
+              </div>
+
+              {/* Right Visual Element */}
+              <div className="relative">
+                <div className="relative rounded-3xl shadow-2xl overflow-hidden bg-gradient-to-br from-indigo-600 via-purple-700 to-blue-800 p-8 transform hover:scale-105 transition-transform duration-500 h-96">
+                  
+                  {/* Animated Background Pattern */}
+                  <div className="absolute inset-0">
+                    <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-transparent via-white to-transparent opacity-5 animate-pulse"></div>
+                    <div className="absolute top-4 right-8 w-24 h-24 border-2 border-white border-opacity-20 rounded-full animate-spin" style={{animationDuration: '8s'}}></div>
+                    <div className="absolute bottom-12 left-6 w-16 h-16 border border-white border-opacity-30 rounded-full animate-ping" style={{animationDuration: '3s'}}></div>
                   </div>
-                </div>
-                <div class="relative">
-                  <div class="aspect-w-1 aspect-h-1">
-                    <img alt="Abstract crowdfunding illustration" class="object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuATkib8kS_8njB5B3VgaTOmmgC0zdytf9FZXPChxAkqqr35pGF3HeALJ3RkPOoHR4Haef-6WjgnRKXlPCD0XxRiTGjW1uwaIHp9Hs-v21Qu7ddQCo2oFxAVcCJTUeYAV219DP_ICn64G054zkGbtYQeXY3KA-I1VeRoiod9RatS7qBQ5C0DjjPSfld9Bibc-aYqBL04DP9CYhj8Hk6mHHN7BZjUJLVjfVkSNdB2VxLoGtjb8PHnXxCLknEW79a7d0dCduariIpcyVsc" />
+
+                  {/* Main Content */}
+                  <div className="relative z-10 h-full flex flex-col justify-center items-center text-white space-y-6">
+                    
+                    {/* Funding Progress Visualization */}
+                    <div className="w-full max-w-sm">
+                      <div className="text-center mb-4">
+                        <h3 className="text-2xl font-bold mb-2">Campaign Success</h3>
+                        <div className="text-4xl font-extrabold text-green-300">$847K</div>
+                        <div className="text-sm opacity-80">of $500K goal</div>
+                      </div>
+                      
+                      {/* Progress Bar */}
+                      <div className="relative w-full bg-white bg-opacity-20 rounded-full h-4 mb-4">
+                        <div className="absolute top-0 left-0 bg-gradient-to-r from-green-400 to-emerald-500 h-4 rounded-full animate-pulse" style={{width: '85%'}}></div>
+                        <div className="absolute top-0 right-0 w-3 h-3 bg-white rounded-full mt-0.5 mr-1 animate-bounce"></div>
+                      </div>
+                      
+                      <div className="text-center text-lg font-semibold text-green-300">169% Funded!</div>
+                    </div>
+
+                    {/* Key Metrics Grid */}
+                    <div className="grid grid-cols-3 gap-4 w-full max-w-sm">
+                      <div className="text-center bg-white backdrop-blur-sm rounded-xl p-4 shadow-lg">
+                        <Users className="w-6 h-6 mx-auto mb-2 text-indigo-600" />
+                        <div className="text-xl font-bold text-gray-900">2.4K</div>
+                        <div className="text-sm text-gray-600 font-medium">Backers</div>
+                      </div>
+                      
+                      <div className="text-center bg-white backdrop-blur-sm rounded-xl p-4 shadow-lg">
+                        <TrendingUp className="w-6 h-6 mx-auto mb-2 text-indigo-600" />
+                        <div className="text-xl font-bold text-gray-900">28</div>
+                        <div className="text-sm text-gray-600 font-medium">Days Left</div>
+                      </div>
+                      
+                      <div className="text-center bg-white backdrop-blur-sm rounded-xl p-4 shadow-lg">
+                        <Target className="w-6 h-6 mx-auto mb-2 text-indigo-600" />
+                        <div className="text-xl font-bold text-gray-900">$354</div>
+                        <div className="text-sm text-gray-600 font-medium">Avg Pledge</div>
+                      </div>
+                    </div>
+
+                    {/* Live Activity Indicator */}
+                    <div className="flex items-center space-x-3 bg-gradient-to-r from-green-500 to-emerald-600 bg-opacity-20 backdrop-blur-sm rounded-full py-2 px-4">
+                      <div className="flex space-x-1">
+                        <div className="w-2 h-2 bg-green-400 rounded-full animate-ping"></div>
+                        <div className="w-2 h-2 bg-green-400 rounded-full animate-ping" style={{animationDelay: '0.2s'}}></div>
+                        <div className="w-2 h-2 bg-green-400 rounded-full animate-ping" style={{animationDelay: '0.4s'}}></div>
+                      </div>
+                      <span className="text-sm font-medium">5 recent pledges</span>
+                    </div>
+
                   </div>
+
+                  {/* Floating Money/Coin Elements */}
+                  <div className="absolute top-6 right-12 text-2xl animate-bounce" style={{animationDelay: '0.5s'}}>💰</div>
+                  <div className="absolute top-20 left-8 text-xl animate-pulse" style={{animationDelay: '1s'}}>🚀</div>
+                  <div className="absolute bottom-16 right-6 text-lg animate-bounce" style={{animationDelay: '1.5s'}}>⭐</div>
+                  <div className="absolute bottom-8 left-12 text-xl animate-pulse" style={{animationDelay: '2s'}}>💡</div>
+
+                  {/* Success Burst Effect */}
+                  <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 pointer-events-none">
+                    <div className="relative">
+                      <div className="w-32 h-32 border border-yellow-300 border-opacity-30 rounded-full animate-ping" style={{animationDuration: '4s'}}></div>
+                      <div className="absolute inset-0 w-32 h-32 border border-green-300 border-opacity-30 rounded-full animate-ping" style={{animationDuration: '4s', animationDelay: '1s'}}></div>
+                    </div>
+                  </div>
+
                 </div>
               </div>
-            </div>
-          </section>
-        </main>
-      </div>
-      <div>
-        <footer class="bg-gray-900 text-white">
-          <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-              <div>
-                <h3 class="text-lg font-semibold">CrowdfundX</h3>
-                <p class="mt-2 text-gray-400 text-sm">Empowering ideas and funding dreams since 2023.</p>
-              </div>
-              <div>
-                <h3 class="text-lg font-semibold">Quick Links</h3>
-                <ul class="mt-4 space-y-2 text-sm">
-                  <li><a class="text-gray-400 hover:text-white transition-colors" href="#">About Us</a></li>
-                  <li><a class="text-gray-400 hover:text-white transition-colors" href="#">How It Works</a></li>
-                  <li><a class="text-gray-400 hover:text-white transition-colors" href="#">FAQ</a></li>
-                  <li><a class="text-gray-400 hover:text-white transition-colors" href="#">Contact</a></li>
-                </ul>
-              </div>
-              <div>
-                <h3 class="text-lg font-semibold">Campaigns</h3>
-                <ul class="mt-4 space-y-2 text-sm">
-                  <li><a class="text-gray-400 hover:text-white transition-colors" href="#">Explore</a></li>
-                  <li><a class="text-gray-400 hover:text-white transition-colors" href="#">Start a Campaign</a></li>
-                  <li><a class="text-gray-400 hover:text-white transition-colors" href="#">Success Stories</a></li>
-                  <li><a class="text-gray-400 hover:text-white transition-colors" href="#">Trust &amp; Safety</a></li>
-                </ul>
-              </div>
-              <div>
-                <h3 class="text-lg font-semibold">Follow Us</h3>
-                <div class="flex mt-4 space-x-4">
-                  <a class="text-gray-400 hover:text-white transition-colors" href="#">
-                    <span class="sr-only">Facebook</span>
-                    <svg aria-hidden="true" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"><path clip-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" fill-rule="evenodd"></path></svg>
-                  </a>
-                  <a class="text-gray-400 hover:text-white transition-colors" href="#">
-                    <span class="sr-only">Twitter</span>
-                    <svg aria-hidden="true" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"><path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.71v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84"></path></svg>
-                  </a>
-                  <a class="text-gray-400 hover:text-white transition-colors" href="#">
-                    <span class="sr-only">Instagram</span>
-                    <svg aria-hidden="true" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"><path clip-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.024.06 1.378.06 3.808s-.012 2.784-.06 3.808c-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.024.048-1.378.06-3.808.06s-2.784-.013-3.808-.06c-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.048-1.024-.06-1.378-.06-3.808s.012-2.784.06-3.808c.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 016.08 2.525c.636-.247 1.363-.416 2.427-.465C9.53 2.013 9.884 2 12.315 2zM12 8.118c-2.146 0-3.882 1.736-3.882 3.882s1.736 3.882 3.882 3.882 3.882-1.736 3.882-3.882S14.146 8.118 12 8.118zM12 14.158c-1.196 0-2.158-.962-2.158-2.158s.962-2.158 2.158-2.158 2.158.962 2.158 2.158-.962 2.158-2.158 2.158zM16.953 6.577a1.44 1.44 0 11-2.88 0 1.44 1.44 0 012.88 0z" fill-rule="evenodd"></path></svg>
-                  </a>
-                </div>
-              </div>
-            </div>
-            <div class="mt-8 border-t border-gray-800 pt-8 text-center text-sm text-gray-500">
-              <p>© 2025 CrowdfundX. All rights reserved.</p>
             </div>
           </div>
-        </footer>
-      </div>
+        </section>
+      </main>
+
+      {/* Footer */}
+      <footer className="bg-gray-900 text-gray-300 mt-auto">
+        <div className="container mx-auto px-6 lg:px-12 py-12">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
+            
+            <div>
+              <h3 className="text-xl font-bold text-white">CrowdfundX</h3>
+              <p className="mt-3 text-sm text-gray-400">
+                Empowering ideas & funding dreams since 2023.
+              </p>
+            </div>
+            
+            <div>
+              <h3 className="text-lg font-semibold text-white">Quick Links</h3>
+              <ul className="mt-4 space-y-2 text-sm">
+                <li><a className="hover:text-white transition-colors" href="#">About Us</a></li>
+                <li><a className="hover:text-white transition-colors" href="#">How It Works</a></li>
+                <li><a className="hover:text-white transition-colors" href="#">FAQ</a></li>
+                <li><a className="hover:text-white transition-colors" href="#">Contact</a></li>
+              </ul>
+            </div>
+
+            <div>
+              <h3 className="text-lg font-semibold text-white">Campaigns</h3>
+              <ul className="mt-4 space-y-2 text-sm">
+                <li><a className="hover:text-white transition-colors" href="#">Explore</a></li>
+                <li><a className="hover:text-white transition-colors" href="#">Start a Campaign</a></li>
+                <li><a className="hover:text-white transition-colors" href="#">Success Stories</a></li>
+                <li><a className="hover:text-white transition-colors" href="#">Trust & Safety</a></li>
+              </ul>
+            </div>
+
+            <div>
+              <h3 className="text-lg font-semibold text-white">Follow Us</h3>
+              <div className="flex mt-4 space-x-5">
+                <a href="#" className="hover:text-white">🌐</a>
+                <a href="#" className="hover:text-white">🐦</a>
+                <a href="#" className="hover:text-white">📸</a>
+              </div>
+            </div>
+
+          </div>
+          <div className="mt-10 border-t border-gray-800 pt-6 text-center text-sm text-gray-500">
+            © 2025 CrowdfundX. All rights reserved.
+          </div>
+        </div>
+      </footer>
     </div>
   )
 }

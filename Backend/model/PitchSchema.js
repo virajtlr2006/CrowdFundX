@@ -18,7 +18,8 @@ const pitchSchema = new mongoose.Schema({
     raisefund:{
         type:Number,
         default:0
-    }
+    },
+    singleprice:String
 
 })
 

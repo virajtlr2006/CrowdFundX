@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import axios from "axios"
-import { useNavigate } from "react-router";
+import { useLocation, useNavigate } from "react-router";
 import { LogIn, Rocket } from 'lucide-react';
 
 const Signin = () => {
@@ -8,6 +8,7 @@ const Signin = () => {
   const [password, setPassword] = useState("")
 
   const navigate = useNavigate()
+  const location = useLocation()
 
   const onSubmit = async () => {
     const API = await axios.post("http://localhost:8080/auth/signin", {
@@ -23,9 +24,14 @@ const Signin = () => {
     }
     if (API.data.msg === "Signed Successfully") {
       localStorage.setItem("email", email)
-      navigate("/")
+      window.location.href = 'http://localhost:5173/';
     }
   }
+  useEffect(() => {
+    console.log(location.pathname);
+    
+  }, [])
+  
 
   return (
     <div className="flex min-h-screen bg-gray-100">

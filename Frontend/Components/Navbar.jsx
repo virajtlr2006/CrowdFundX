@@ -5,22 +5,29 @@ import { useNavigate } from "react-router";
 const Navbar = () => {
   const [isLogin, setIsLogin] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
-  const navigate = useNavigate
+  
+
 
   useEffect(() => {
-    if (localStorage.getItem("email")) {
+    if (localStorage.getItem("email") != undefined) {
       setIsLogin(true);
     }
-  }, []);
-
+    
+  }, [isLogin]);
+ 
+    const profile = () => {
+    navigate("/profile")
+  }
   const handleLogout = () => {
     localStorage.removeItem("email");
     setIsLogin(false);
     navigate("/signin");
   };
 
+
+
   return (
-    <nav className="bg-gradient-to-r from-indigo-50 via-purple-50 to-pink-50 shadow-md px-6 py-4 flex justify-between items-center relative">
+    <nav className="bg-gradient-to-r from-indigo-50 via-purple-50 to-pink-50 shadow-md px-6 py-4 flex justify-between items-center relative ">
       {/* Logo */}
       <a href="/" className="flex gap-3 items-center text-blue-700 font-bold text-xl">
         <Layers className="h-7 w-7" />
@@ -29,7 +36,7 @@ const Navbar = () => {
 
       {/* Links */}
       <div className="hidden md:flex gap-6 items-center">
-        {[ "Explore", "New", "About"].map((link) => (
+        {[ "Explore", "New","myfund"].map((link) => (
           <a
             key={link}
             href={`/${link.toLowerCase()}`}
@@ -53,12 +60,16 @@ const Navbar = () => {
           {/* Dropdown */}
           {dropdownOpen && (
             <div className="absolute right-0 mt-2 w-40 bg-white rounded-xl shadow-lg border border-gray-200 overflow-hidden z-20">
+              <a href="/profile">
+              
               <button
-                onClick={() => navigate("/profile")}
+                
+                
                 className="w-full text-left px-4 py-2 text-gray-700 hover:bg-indigo-50 hover:text-indigo-700 transition-colors"
               >
                 Profile
               </button>
+              </a>
               <button
                 onClick={handleLogout}
                 className="w-full text-left px-4 py-2 text-gray-700 hover:bg-red-50 hover:text-red-600 transition-colors"
