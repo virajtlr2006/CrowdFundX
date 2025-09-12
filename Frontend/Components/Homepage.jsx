@@ -114,20 +114,7 @@ const CrowdfundXLanding = () => {
                     🔍 Explore Campaigns
                   </button>
                 </div>
-                <div className="mt-8 flex items-center justify-center lg:justify-start space-x-8 text-sm text-gray-600">
-                  <div className="text-center">
-                    <div className="text-2xl font-bold text-gray-900">$50M+</div>
-                    <div>Funds Raised</div>
-                  </div>
-                  <div className="text-center">
-                    <div className="text-2xl font-bold text-gray-900">25K+</div>
-                    <div>Projects Funded</div>
-                  </div>
-                  <div className="text-center">
-                    <div className="text-2xl font-bold text-gray-900">180+</div>
-                    <div>Countries</div>
-                  </div>
-                </div>
+              
               </div>
 
               {/* Right Visual Element - Keep existing design */}
